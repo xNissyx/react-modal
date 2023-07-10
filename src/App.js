@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import useModal from "./hooks/useModal";
 
 function App() {
+  const { Modal, openModal, closeModal } = useModal();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div style={{ margin:'2rem' }}>
+      <h1>React Hooksでモーダルウィンドウを作成</h1>
+      <div>
+        <button onClick={ openModal }>open</button>
+      </div>
+      <Modal>
+        <div
+          style={{
+            backgroundColor: 'white',
+            width: '500px',
+            height: '200px',
+            padding: '1em',
+            borderRadius: '15px',
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <h1>Content from Children</h1>
+          <div>
+            <button onClick={ closeModal }>close</button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
-}
+};
 
 export default App;
