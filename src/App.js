@@ -25,6 +25,7 @@ function App() {
           </div>
         </div>
       </Modal>
+      <div style={{ height: '2000px', backgroundColor: '#ddd' }}>メインコンテンツ</div>
     </div>
   );
 };

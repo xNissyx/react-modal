@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const useModal = () => {
     const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ const useModal = () => {
 
     const Modal = ({ children }) => {
         if (show === false) return null;
-        return (
+        return createPortal(
             <div
               style={{
                 position: 'fixed',
@@ -38,8 +39,10 @@ const useModal = () => {
                 }}
               ></div>
               <div style={{ position: 'relative' }}>{children}</div>
-            </div>
-    )};
+            </div>,
+            document.getElementById('root')
+        );
+    };
 
     return { Modal, openModal, closeModal };
 };
